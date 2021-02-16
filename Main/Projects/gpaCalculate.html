@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>حساب المعدل التراكمي</title>
+        <style>
+            .title{
+                text-align: center;
+            }
+            input {
+                margin-right: 50;
+            }
+            label{
+                margin-right: 8;
+            }
+        
+        </style>
+        <script>
+            var courses;
+            var Numerator = 0;
+            var Credits = 0;
+            function show(){
+            courses = window.prompt("Enter Number Of courses");
+            
+            for(var i=0; i<courses; i++){
+                document.getElementById("A").innerHTML+=
+                    '<div class="title">' +
+                    '<label>Course Name</label>' +
+       ' <input type="text" id="name'+i+'"/>'+
+                   
+        '<label>Number of Credits</label>'+
+                    
+        '<input type="number" id="credits'+i+'"/>'+
+                    
+        '<label>Grade</label>'+
+                    
+        '<input type="number" id="grade'+i+'"/>'
+                + '<hr>' + '</div>';
+                
+            }
+                
+                
+            }
+            
+            function calculate(){
+                
+                for(var i=0; i<courses; i++){
+                    var c = "credits" + i;
+                    var g = "grade" + i;
+                    Numerator+=document.getElementById(c).value * document.getElementById(g).value;
+                    Credits+=parseInt(document.getElementById(c).value);
+                   
+                }
+                
+                var GPA = Numerator/Credits;
+                 Numerator = 0;
+                 Credits = 0;
+                
+                
+                alert("Your GPA is " + GPA);
+            }
+        
+        </script>
+    </head>
+    <body onload="show()">
+        
+        
+        
+            <h1 class="title">GPA Calculator</h1>
+            
+            
+    <div id="A">   
+	</div>
+        <div class="title">
+       <input type="submit" value="Calculate" onclick="calculate()"/> 
+        </div>
+        
+        
+        
+    </body>
+</html>
